@@ -28,12 +28,16 @@ public class ValidateRunner {
 				break;
 			}
 			for (int i = 0; i < row.length; i++) {
+				System.out.print(row[i] + " ");
 				board[y][i] = row[i];
 			}
+			System.out.println("");
 			y++;
 		}
-		if (y != 9) {		//If # or rows isn't 10, invalid
+		if (y != 10) {		//If # or rows isn't 10, invalid
 			validity = false;
+		} else {
+			validity = Validate.boardValidator(board);
 		}
 		sc.close();
 		
@@ -42,6 +46,12 @@ public class ValidateRunner {
 			System.out.println("This board is invalid.");
 		} else {
 			System.out.println("This board is valid.");
+		}
+		
+		if (Validate.balanced(board)) {
+			System.out.println("This board is balanced.");
+		} else {
+			System.out.println("This board is unbalanced.");
 		}
 
 	}
